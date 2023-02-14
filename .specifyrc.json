@@ -4,56 +4,30 @@
   "base": "main",
   "rules": [
     {
-      "name": "Design Tokens / Colors",
-      "path": "./output/styles/colors.css",
+      "name": "Design Tokens / Theme",
+      "path": "./output/theme.js",
       "filter": {
         "types": [
-          "color"
+          "color",
+          "textStyle",
+          "font"
         ]
       },
       "parsers": [
         {
-          "name": "sort-by",
+          "name": "to-tailwind",
           "options": {
-            "keys": [
-              "name"
-            ]
-          }
-        },
-        {
-          "name": "to-css-custom-properties",
-          "options": {
-            "formatName": "kebabCase"
+            "formatName": "camelCase",
+            "formatConfig": {
+              "objectName": "extend",
+              "module": "commonjs"
+            }
           }
         }
       ]
     },
     {
-      "name": "Design Tokens / Text Styles",
-      "path": "./output/styles/text-styles.css",
-      "filter": {
-        "types": [
-          "textStyle"
-        ]
-      },
-      "parsers": [
-        {
-          "name": "to-css-text-style",
-          "options": {
-            "exclude": [
-              "color",
-              "text-indent",
-              "vertical-align",
-              "text-align"
-            ],
-            "relativeLineHeight": true,
-            "genericFamily": "serif"
-          }
-        }
-      ]
-    },
-    {
-      "name": "Design Tokens / Import font files in CSS",
+      "name": "Design Tokens / CSS font imports",
       "path": "./output/styles/fonts.css",
       "filter": {
         "types": [
@@ -68,14 +42,14 @@
               "woff",
               "woff2"
             ],
-            "fontsPath": "../fonts"
+            "fontsPath": "../assets/fonts"
           }
         }
       ]
     },
     {
-      "name": "Design Tokens / Import font files",
-      "path": "./output/fonts",
+      "name": "Design Tokens / Export fonts",
+      "path": "./output/assets/fonts",
       "filter": {
         "types": [
           "font"
@@ -94,8 +68,8 @@
       ]
     },
     {
-      "name": "Design Tokens / Vectors",
-      "path": "./output/vectors",
+      "name": "Design Tokens / Vector",
+      "path": "./output/assets/vectors",
       "filter": {
         "types": [
           "vector"
@@ -111,7 +85,26 @@
             "svgo": {
               "js2svg": {
                 "pretty": true
-              }
+              },
+              "plugins": [
+                {
+                  "removeDimensions": true
+                },
+                {
+                  "removeAttrs": {
+                    "attrs": "*:(fill|stroke)"
+                  }
+                },
+                {
+                  "addAttributesToSVGElement": {
+                    "attributes": [
+                      "width=\"1em\"",
+                      "height=\"1em\"",
+                      "focusable=\"false\""
+                    ]
+                  }
+                }
+              ]
             }
           }
         }
