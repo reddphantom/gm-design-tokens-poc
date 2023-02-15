@@ -1,0 +1,19 @@
+.card {
+	width: 378px;
+	/* using css props generated from design tokens */
+	background-color: var(--white-100);
+	padding: 80px;
+}
+.wrapper {
+	padding-top: 80px;
+}
+.button {
+	margin-top: 20px;
+	padding: 20px;
+	background-color: var(--primary);
+}
+.button2 {
+	margin-top: 8px;
+	padding: 20px;
+	background-color: var(--secondary);
+}
