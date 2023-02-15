@@ -1,8 +1,8 @@
 :root {
   /* COLOR */
-  --black-80: rgb(35, 38, 45);
-  --primary: rgb(24, 188, 60);
-  --secondary: rgb(238, 114, 0);
+  --black-80: rgb(17, 41, 98);
+  --primary: rgb(115, 55, 243);
+  --secondary: rgb(115, 205, 255);
   --success: rgb(44, 195, 140);
   --white-100: rgb(255, 255, 255);
 }
